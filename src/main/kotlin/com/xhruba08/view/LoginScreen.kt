@@ -4,9 +4,11 @@ import com.xhruba08.app.Styles
 import com.xhruba08.controllers.LoginController
 import javafx.beans.property.SimpleStringProperty
 import javafx.geometry.Orientation
+import javafx.geometry.Pos
 import javafx.scene.Parent
 import javafx.scene.paint.Color
 import javafx.scene.text.FontWeight
+import javafx.scene.text.TextAlignment
 import tornadofx.*
 
 class LoginScreen : View("Login") {
@@ -36,11 +38,19 @@ class LoginScreen : View("Login") {
         }
         label(loginController.statusProperty) {
             style {
-                paddingTop = 10
+                paddingTop = 5
+                useMaxWidth = true
+                textAlignment = TextAlignment.CENTER
+                alignment = Pos.CENTER
                 textFill = Color.RED
                 fontWeight = FontWeight.BOLD
             }
         }
     }
 
+    override fun onDock() {
+        username.value = ""
+        password.value = ""
+        model.clearDecorators()
+    }
 }

@@ -31,4 +31,11 @@ class LoginController : Controller() {
         }
     }
 
+    fun logout() {
+        user.item = null
+        primaryStage.uiComponent<UIComponent>()?.replaceWith(LoginScreen::class, sizeToScene = true, centerOnScreen = true)
+    }
+
+
+
 }
